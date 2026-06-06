@@ -1,84 +1,68 @@
+---
+import profile from "../assets/profile.png";
+
+const navItems = [
+    { id: "home", name: "Home", icon: "architecture", route: "/" },
+    { id: "tech_stack", name: "Tech Stack", icon: "terminal", route: "/about" },
+    { id: "projects", name: "Projects", icon: "draw", route: "/projects" },
+    { id: "contact", name: "Contact", icon: "edit_note", route: "/contact" },
+];
+const selected = "home";
+---
+
 <nav
-    aria-label="Main Navigation"
-    class="bg-transparent fixed left-0 top-0 h-full w-24 border-r-4 border-primary border-dashed flex flex-col items-center justify-center space-y-12 py-8 z-40 md:flex"
+    class="fixed left-0 top-0 h-full w-24 border-r-4 border-primary border-dashed flex flex-col items-center justify-center space-y-12 py-8"
 >
     <div class="mb-8 flex flex-col items-center">
         <img
-            alt="Engineer Avatar"
-            class="w-12 h-12 rounded-full sketch-border object-cover mb-2 grayscale"
-            data-alt="A sketchy, rough hand-drawn portrait of a male engineer in his 30s. The portrait is drawn with thick indigo ink lines on an off-white textured paper background. The style is loose and expressive, capturing a thoughtful expression with messy hair and round glasses. There are faint pencil grid lines visible behind the drawing, adding to the drafting table aesthetic."
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9pULy6OX8XWhqzda_uE2Qt-IUTz-7SZhKaofYWq_x64YQ5am29a32pfMhrbRoCd3DQEgO0pcRL6OXoe8dG6FLsrfdfcY3gBtiZA3fApACB6nE2PMVdVLrP052U51niWwLv4x6WdFzX_NvfHlhCCBSADD7hG-jbuYX_0SFnlu0vwxXGNxm-hX_DeOl7gYL9vABh5LyJigd2SLTrLewuKg7e3B2CVm-0S_NnVWQ9IqGOR79Itj49b5n17YoqLxPdJ7YWuH9zsKfrXk"
+            alt="Avatar"
+            class="w-12 h-12 rounded-full border-gray-950 border-3 object-cover mb-2 grayscale"
+            src={profile.src}
         />
         <div class="text-center font-display text-headline-md text-secondary">
-            AA
-        </div>
-        <div class="font-label-mono text-label-mono text-primary text-xs mt-1">
-            Sr. Eng
+            Awais
         </div>
     </div>
     <ul
-        class="flex flex-col gap-12 grow justify-center font-label-mono text-label-mono"
+        class="flex flex-col gap-16 grow justify-center font-label-mono text-label-mono"
     >
+        {
+            navItems.map((item) => (
+                <li>
+                    <a
+                        class:list={[
+                            "flex flex-col items-center gap-3 cursor-pointer group hover:translate-x-1 hover:translate-y-1 hover:scale-110 transition-all duration-200 active:rotate-3 active:scale-110",
+                            {
+                                "text-secondary font-bold underline decoration-wavy decoration-2":
+                                    item.id === selected,
+                            },
+                            {
+                                "text-on-surface opacity-70 hover:opacity-100":
+                                    item.id !== selected,
+                            },
+                        ]}
+                    >
+                        <span class="material-symbols-outlined text-2xl group-hover:scale-110 transition-transform">
+                            {item.icon}
+                        </span>
+                        <span class="-rotate-90 origin-center translate-x-3 whitespace-nowrap mt-4">
+                            {item.name}
+                        </span>
+                    </a>
+                </li>
+            ))
+        }
+
         <li class="">
             <a
-                class="flex flex-col items-center gap-2 text-secondary font-bold underline decoration-wavy decoration-2 group hover:translate-x-1 transition-all duration-200 Active: rotate-3 scale-110"
+                class="flex flex-col items-center gap-2 cursor-pointer group hover:translate-x-1 transition-transform duration-200"
             >
-                <span
-                    class="material-symbols-outlined text-2xl group-hover:scale-110 transition-transform"
-                    >architecture</span
-                >
-                <span
-                    class="-rotate-90 origin-center translate-x-3 whitespace-nowrap mt-4"
-                    >Blueprint</span
-                >
-            </a>
-        </li>
-        <li class="">
-            <a
-                class="flex flex-col items-center gap-2 text-on-surface opacity-70 hover:opacity-100 group hover:translate-x-1 transition-transform duration-200"
-            >
-                <span
-                    class="material-symbols-outlined text-2xl group-hover:scale-110 transition-transform"
-                    >terminal</span
-                >
-                <span
-                    class="-rotate-90 origin-center translate-x-3 whitespace-nowrap mt-6"
-                    >Tech Stack</span
-                >
-            </a>
-        </li>
-        <li class="">
-            <a
-                class="flex flex-col items-center gap-2 text-on-surface opacity-70 hover:opacity-100 group hover:translate-x-1 transition-transform duration-200"
-            >
-                <span
-                    class="material-symbols-outlined text-2xl group-hover:scale-110 transition-transform"
-                    >draw</span
-                >
-                <span
-                    class="-rotate-90 origin-center translate-x-3 whitespace-nowrap mt-4"
-                    >Projects</span
-                >
-            </a>
-        </li>
-        <li class="">
-            <a
-                class="flex flex-col items-center gap-2 text-on-surface opacity-70 hover:opacity-100 group hover:translate-x-1 transition-transform duration-200"
-            >
-                <span
-                    class="material-symbols-outlined text-2xl group-hover:scale-110 transition-transform"
-                    >edit_note</span
-                >
-                <span
-                    class="-rotate-90 origin-center translate-x-3 whitespace-nowrap mt-4"
-                    >Contact</span
-                >
             </a>
         </li>
     </ul>
     <div class="mt-auto">
         <button
-            class="font-label-mono text-label-mono text-primary p-2 sketch-border-thin jiggle rotate-[-5deg]"
+            class="font-label-mono text-label-mono cursor-pointer text-primary p-2 sketch-border-thin jiggle -rotate-5"
         >
             <span class="material-symbols-outlined align-middle mr-1"
                 >download</span
