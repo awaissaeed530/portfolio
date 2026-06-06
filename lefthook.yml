@@ -1,0 +1,5 @@
+# https://lefthook.dev/configuration/
+pre-commit:
+  jobs:
+    - run: pnpm format
+    - run: pnpm lint:fix
