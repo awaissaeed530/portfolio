@@ -13,14 +13,16 @@
     "lint:fix": "oxlint --fix"
   },
   "dependencies": {
-    "astro": "6.4.4"
+    "@tailwindcss/vite": "4.3.0",
+    "astro": "6.4.4",
+    "tailwindcss": "4.3.0"
   },
   "devDependencies": {
-    "lefthook": "^2.1.9",
+    "lefthook": "2.1.9",
     "oxfmt": "0.53.0",
     "oxlint": "1.68.0"
   },
   "engines": {
-    "node": ">=22.12.0"
+    "node": ">=24.16.0"
   }
 }
